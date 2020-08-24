@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorFont_black">#FF373737</color>
+    <color name="colorFont_gray">#A9A9A9</color>
+
+    <color name="color_bg_gray">#C9CED1</color>
+
+    <color name="color_pale_orange">#FFA54F</color>
+    <color name="color_pale_dark_orange">#FF8C00</color>
+
+</resources>

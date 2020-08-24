@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/round_corner_bg_white">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/alert_dialog_error"/>
+
+    <TextView
+        android:id="@+id/tv_error_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:text="错误"
+        android:textSize="20sp"
+        android:textColor="@color/colorFont_black"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_error_dialog_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="XXXXXXXXXXXXXXXXXXXXXXXX"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/colorFont_gray"/>
+
+    <Button
+        android:id="@+id/btn_error_dialog_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="确定"
+        android:textSize="15sp"
+        android:textColor="@color/colorFont_black"
+        android:background="@drawable/round_corner_bg_gray"/>
+
+</LinearLayout>

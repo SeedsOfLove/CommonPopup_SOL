@@ -1,0 +1,3 @@
+include ':CommonPopupLib'
+include ':app'
+rootProject.name = "CommonPopup_SOL"

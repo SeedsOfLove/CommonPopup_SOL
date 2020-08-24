@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:gravity="center"
+    android:background="@drawable/round_corner_bg_white">
+
+    <TextView
+        android:id="@+id/tv_line_load_dialog_with_value_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="提示"
+        android:textSize="20sp"
+        android:textColor="@color/colorFont_black"
+        android:textStyle="bold"/>
+
+    <com.bluewater.commonpopuplib.progress.HorizontalProgressBar
+        android:id="@+id/hsv_line_load_dialog_with_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"/>
+
+</LinearLayout>

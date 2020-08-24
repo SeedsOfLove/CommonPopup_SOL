@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--对话框弹出、关闭动画效果-->
+    <style name="DialogAnimStyle" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_anim_appear</item>
+        <item name="android:windowExitAnimation">@anim/dialog_anim_disappear</item>
+    </style>
+
+</resources>
