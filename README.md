@@ -4,34 +4,45 @@
 >提供Android常用弹窗
 
 **效果展示**
+
 基础弹窗
+
 ![1.jpg](./img/1.jpg)
 
 错误弹窗
+
 ![2.jpg](./img/2.jpg)
 
 确认弹窗
+
 ![3.jpg](./img/3.jpg)
 
 加载弹窗
+
 ![4.jpg](./img/4.jpg)
 
 带进度的线型加载弹窗
+
 ![5.jpg](./img/5.jpg)
 
 带进度的圆圈加载弹窗
+
 ![6.jpg](./img/6.jpg)
 
 输入弹窗
+
 ![7.jpg](./img/7.jpg)
 
 下拉弹窗
+
 ![8.jpg](./img/8.jpg)
 
 单选弹窗
+
 ![9.jpg](./img/9.jpg)
 
 多选弹窗
+
 ![10.jpg](./img/10.jpg)
 
 ## 使用方式
