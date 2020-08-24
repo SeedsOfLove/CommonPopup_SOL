@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.bluewater.commonpopuplib.R;
-import com.bluewater.toolutilslib.NormalUtils;
+import com.bluewater.commonpopuplib.Utils;
 
 /**
  * 带数值的圆圈进度条控件
@@ -99,10 +99,10 @@ public class DonutProgressBar extends View
     {
         super(context, attrs, defStyleAttr);
 
-        default_text_size = NormalUtils.sp2px(getResources(), 18);
-        min_size = (int) NormalUtils.dp2px(getResources(), 100);
-        default_stroke_width = NormalUtils.dp2px(getResources(), 10);
-        default_inner_bottom_text_size = NormalUtils.sp2px(getResources(), 18);
+        default_text_size = Utils.sp2px(getResources(), 18);
+        min_size = (int) Utils.dp2px(getResources(), 100);
+        default_stroke_width = Utils.dp2px(getResources(), 10);
+        default_inner_bottom_text_size = Utils.sp2px(getResources(), 18);
 
         final TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.DonutProgress, defStyleAttr, 0);
         initByAttributes(attributes);

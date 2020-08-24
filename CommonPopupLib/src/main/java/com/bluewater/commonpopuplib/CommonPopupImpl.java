@@ -20,7 +20,6 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.bluewater.commonpopuplib.progress.DonutProgressBar;
 import com.bluewater.commonpopuplib.progress.HorizontalProgressBar;
-import com.bluewater.toolutilslib.AppUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +53,7 @@ public class CommonPopupImpl implements CommonPopup
     {
         dialog.show();
         dialog.setContentView(view);
-        dialog.getWindow().setLayout(AppUtils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT);//设置弹出框宽度为屏幕高度的四分之三
+        dialog.getWindow().setLayout(Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT);//设置弹出框宽度为屏幕高度的四分之三
     }
 
     /**
