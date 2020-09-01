@@ -42,7 +42,8 @@ public interface CommonPopup
     //多选弹窗
     void showMultipleChoiceDialog(String strTitle, List<String> listData, final CommonPopupImpl.OnMultipleChoiceDialogClickListener listener);
 
-
+    //引导提示弹窗
+    void showGuidanceTipsDialog(final int[] imgs, final int[] tips, String btnName, final CommonPopupImpl.OnGuidanceTipsDialogClickListener listener);
 
 
 }

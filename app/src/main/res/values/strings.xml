@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CommonPopup_SOL</string>
+
+    <string name="guidance_tips1">步骤1：牛头跳大</string>
+    <string name="guidance_tips2">步骤2：谜团跳大</string>
+
 </resources>

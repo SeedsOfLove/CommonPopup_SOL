@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onClick11(View view)
     {
-        final CommonPopup popup = new CommonPopupImpl(mContext, false);
+        final CommonPopup popup = new CommonPopupImpl(mContext, true);
         final HorizontalProgressBar progressBar = popup.showLineLoadDialogWithValue(null);
 
         new Thread(new Runnable()
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onClick12(View view)
     {
-        final CommonPopup popup = new CommonPopupImpl(mContext, false);
+        final CommonPopup popup = new CommonPopupImpl(mContext, true);
         final DonutProgressBar progressBar = popup.showDonutLoadDialogWithValue(null);
 
         new Thread(new Runnable()
@@ -232,7 +232,21 @@ public class MainActivity extends AppCompatActivity
         }).start();
     }
 
+    public void onClick13(View view)
+    {
+        int[] imgs = {R.mipmap.guidance_tips_img1, R.mipmap.guidance_tips_img2};    //要显示的图片资源
+        int[] tips = {R.string.guidance_tips1, R.string.guidance_tips2};                //对应的提示
 
+        final CommonPopup popup = new CommonPopupImpl(mContext, true);
+        popup.showGuidanceTipsDialog(imgs, tips, "进入", new CommonPopupImpl.OnGuidanceTipsDialogClickListener()
+        {
+            @Override
+            public void onGuidanceTipsDialogOkButtonClick()
+            {
+                popup.dialogDismiss(); //弹窗消失
+            }
+        });
+    }
 
 
 

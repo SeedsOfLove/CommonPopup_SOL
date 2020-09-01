@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/round_corner_bg_white">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_guidance_tips_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_guidance_tips_dialog_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="XXXXXXXX"
+        android:textColor="@color/colorFont_black"
+        android:textSize="20sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_guidance_tips_dialog_dot"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_guidance_tips_dialog_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/round_corner_bg_blue"
+            android:textColor="@android:color/white"
+            android:text="完成"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

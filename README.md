@@ -45,6 +45,10 @@
 
 ![10.jpg](./img/10.jpg)
 
+引导提示弹窗
+
+![11.jpg](./img/11.jpg)
+
 ## 使用方式
 ### Step 1. Add the JitPack repository to your build file
 ```
@@ -58,7 +62,7 @@ allprojects {
 ### Step 2. Add the dependency
 ```
 dependencies {
-        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.1'
+        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.2'
 	}
 ```
 ### Step 3. Using

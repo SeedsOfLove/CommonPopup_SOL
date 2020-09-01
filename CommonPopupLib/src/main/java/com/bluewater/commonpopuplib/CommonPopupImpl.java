@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bluewater.commonpopuplib.progress.DonutProgressBar;
 import com.bluewater.commonpopuplib.progress.HorizontalProgressBar;
@@ -630,13 +632,146 @@ public class CommonPopupImpl implements CommonPopup
         dialogSet(view);
     }
 
-
     /*-----------------------------------多选弹窗END----------------------------------------*/
 
 
+    /*-----------------------------------引导提示弹窗----------------------------------------*/
+
+    /**
+     * 引导提示弹窗
+     * @param imgs          图片资源
+     * @param tips          提示文本资源
+     * @param btnName       按钮名称
+     * @param listener      按钮监听
+     */
+    @Override
+    public void showGuidanceTipsDialog(final int[] imgs, final int[] tips, String btnName, final OnGuidanceTipsDialogClickListener listener)
+    {
+        ArrayList<ImageView> imageViews = new ArrayList<>();        //用于包含引导页要显示的图片
+        final ImageView[] dotViews = new ImageView[imgs.length];    //用于包含底部小圆点的图片，只要设置每个imageview的图片资源为刚刚写的dot_selector，选择和没选中就会有不同的效果，实现导航的功能。
 
 
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_guidance_tips_dialog, null);
+        ViewPager viewPager = view.findViewById(R.id.vp_guidance_tips_dialog);
+        final TextView textView = view.findViewById(R.id.tv_guidance_tips_dialog_tips);
+        LinearLayout linearLayout = view.findViewById(R.id.ll_guidance_tips_dialog_dot);
+        final Button btnOk = view.findViewById(R.id.btn_guidance_tips_dialog_ok);
 
+        textView.setText(tips[0]);          //初始化显示第一个提示
+        btnOk.setVisibility(View.GONE);     //初始化不显示按钮
+
+        /*1.把引导页要显示的图片添加到集合中，以传递给适配器，用来显示图片*/
+        LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        for (int i = 0; i < imgs.length; i++)
+        {
+            ImageView iv = new ImageView(mContext);
+            iv.setLayoutParams(mParams);                        //设置布局
+            iv.setImageResource(imgs[i]);                       //为Imageview添加图片资源
+            iv.setScaleType(ImageView.ScaleType.FIT_CENTER);    //设置图片显示属性
+            imageViews.add(iv);
+
+            //为最后一张添加点击事件
+//            if (i == imgs.length - 1)
+//            {
+//                iv.setOnClickListener(new View.OnClickListener()
+//                {
+//
+//                    @Override
+//                    public void onClick(View v)
+//                    {
+//                        ToastUtils.onWarnShowToast("qqqqqq");
+//                    }
+//                });
+//            }
+        }
+
+        /*2.根据引导页的数量，动态生成相应数量的导航小圆点，并添加到LinearLayout中显示*/
+        LinearLayout.LayoutParams mParams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        mParams2.setMargins(10, 0, 10, 0);       //设置小圆点左右之间的间隔
+
+        for (int i = 0; i < imageViews.size(); i++)
+        {
+            ImageView imageView = new ImageView(mContext);
+            imageView.setLayoutParams(mParams2);
+            imageView.setImageResource(R.drawable.popup_circle_selector);
+            if (i == 0)
+            {
+                imageView.setSelected(true);    //默认启动时，选中第一个小圆点
+            }
+            else
+            {
+                imageView.setSelected(false);
+            }
+            dotViews[i] = imageView;            //得到每个小圆点的引用，用于滑动页面时，（onPageSelected方法中）更改它们的状态。
+            linearLayout.addView(imageView);    //添加到布局里面显示
+        }
+
+        /*3.viewPager配置*/
+        PopupViewPageAdapter pageAdapter = new PopupViewPageAdapter(imageViews);
+        viewPager.setAdapter(pageAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+        {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
+            {
+
+            }
+
+            @Override
+            public void onPageSelected(int position)
+            {
+                for (int i = 0; i < dotViews.length; i++)
+                {
+                    if (position == i)
+                    {
+                        dotViews[i].setSelected(true);
+                    }
+                    else
+                    {
+                        dotViews[i].setSelected(false);
+                    }
+                }
+
+                textView.setText(tips[position]);
+
+                //最后一个页面显示按钮
+                if (position == (imgs.length - 1))
+                {
+                    btnOk.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    btnOk.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state)
+            {
+
+            }
+        });
+
+        /*4.完成按钮点击事件*/
+        if (btnName != null)
+        {
+            btnOk.setText(btnName);
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onGuidanceTipsDialogOkButtonClick();
+            }
+        });
+
+        dialogSet(view);
+    }
+
+    /*-----------------------------------引导提示弹窗END----------------------------------------*/
 
 
 
@@ -696,5 +831,13 @@ public class CommonPopupImpl implements CommonPopup
     public interface OnMultipleChoiceDialogClickListener
     {
         void onMultipleChoiceDialogOkButtonClick(List<String> listResult);        //多选弹窗-确定按钮点击事件
+    }
+
+    /**
+     * 引导提示弹窗-按钮点击事件接口
+     */
+    public interface OnGuidanceTipsDialogClickListener
+    {
+        void onGuidanceTipsDialogOkButtonClick();        //引导提示弹窗-确定按钮点击事件
     }
 }

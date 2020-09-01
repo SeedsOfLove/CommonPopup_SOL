@@ -44,6 +44,6 @@
         android:text="确定"
         android:textSize="15sp"
         android:textColor="@color/colorFont_black"
-        android:background="@drawable/round_corner_bg_gray"/>
+        android:background="@drawable/popup_button_bg_gray"/>
 
 </LinearLayout>
