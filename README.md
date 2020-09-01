@@ -79,6 +79,7 @@ popup.showEditDialog();					//输入弹窗
 popup.showSpinnerDialog();				//下拉弹窗
 popup.showSingleChoiceDialog();			//单选弹窗
 popup.showMultipleChoiceDialog();		//多选弹窗
+popup.showGuidanceTipsDialog();		    //引导提示弹窗
 
 popup.dialogDismiss();	//弹窗消失
 ```
