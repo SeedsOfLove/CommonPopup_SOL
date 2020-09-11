@@ -49,6 +49,18 @@
 
 ![11.jpg](./img/11.jpg)
 
+单项选择列表滚轮弹窗
+
+![12.jpg](./img/12.jpg)
+
+时间选择器弹窗
+
+![13.jpg](./img/13.jpg)
+
+选项选择器弹窗
+
+![14.jpg](./img/14.jpg)
+
 ## 使用方式
 ### Step 1. Add the JitPack repository to your build file
 ```
@@ -62,7 +74,7 @@ allprojects {
 ### Step 2. Add the dependency
 ```
 dependencies {
-        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.2'
+        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.3'
 	}
 ```
 ### Step 3. Using
@@ -70,16 +82,33 @@ dependencies {
 CommonPopup popup = new CommonPopupImpl(mContext, false);
 
 popup.showBasicDialog();				//基础弹窗
+
 popup.showErrorDialog();				//错误弹窗
+
 popup.showConfirmDialog();				//确认弹窗
+
 popup.showLoadDialog();					//加载弹窗
+
 popup.showLineLoadDialogWithValue();	//带进度的线型加载弹窗
+
 popup.showDonutLoadDialogWithValue();	//带进度的圆圈加载弹窗
+
 popup.showEditDialog();					//输入弹窗
+
 popup.showSpinnerDialog();				//下拉弹窗
+
 popup.showSingleChoiceDialog();			//单选弹窗
+
 popup.showMultipleChoiceDialog();		//多选弹窗
+
 popup.showGuidanceTipsDialog();		    //引导提示弹窗
+
+popup.showSingleChoiceWheelDialog();    //单项选择列表滚轮弹窗
+
+popup.showTimePickerWheelDialog();		//时间选择器弹窗
+
+popup.showOptionPickerWheelDialog();	//选项选择器弹窗
+
 
 popup.dialogDismiss();	//弹窗消失
 ```

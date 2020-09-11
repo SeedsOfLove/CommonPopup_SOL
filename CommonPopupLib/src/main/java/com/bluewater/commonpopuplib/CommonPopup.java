@@ -1,8 +1,10 @@
 package com.bluewater.commonpopuplib;
 
+import com.bluewater.commonpopuplib.Wheel.lib.WheelTimeView;
 import com.bluewater.commonpopuplib.progress.DonutProgressBar;
 import com.bluewater.commonpopuplib.progress.HorizontalProgressBar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,6 +46,37 @@ public interface CommonPopup
 
     //引导提示弹窗
     void showGuidanceTipsDialog(final int[] imgs, final int[] tips, String btnName, final CommonPopupImpl.OnGuidanceTipsDialogClickListener listener);
+
+    //单项选择列表滚轮弹窗
+    void showSingleChoiceWheelDialog(String strTitle, ArrayList<String> listData, final CommonPopupImpl.OnSingleChoiceWheelDialogClickListener listener);
+
+    //时间选择器弹窗
+    void showTimePickerWheelDialog(String strTitle, WheelTimeView.Type type, final CommonPopupImpl.OnTimePickerDialogClickListener listener);
+
+    //选项选择器弹窗
+    void showOptionPickerWheelDialog(String strTitle,
+                                     ArrayList<String> optionsItems_1,
+                                     ArrayList<ArrayList<String>> optionsItems_2,
+                                     ArrayList<ArrayList<ArrayList<String>>> optionsItems_3,
+                                     String label1,
+                                     String label2,
+                                     String label3,
+                                     final CommonPopupImpl.OnOptionPickerDialogClickListener listener);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

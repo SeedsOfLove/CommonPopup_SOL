@@ -20,10 +20,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bluewater.commonpopuplib.Wheel.adapter.ArrayWheelAdapter;
+import com.bluewater.commonpopuplib.Wheel.lib.WheelOptionView;
+import com.bluewater.commonpopuplib.Wheel.lib.WheelTimeView;
+import com.bluewater.commonpopuplib.Wheel.lib.WheelView;
 import com.bluewater.commonpopuplib.progress.DonutProgressBar;
 import com.bluewater.commonpopuplib.progress.HorizontalProgressBar;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -774,6 +779,211 @@ public class CommonPopupImpl implements CommonPopup
     /*-----------------------------------引导提示弹窗END----------------------------------------*/
 
 
+    /*-----------------------------------滚轮弹窗----------------------------------------*/
+
+    /**
+     * 单项选择列表滚轮弹窗
+     * @param strTitle      标题
+     * @param listData      数据源
+     * @param listener      按钮事件
+     */
+    @Override
+    public void showSingleChoiceWheelDialog(String strTitle, final ArrayList<String> listData, final OnSingleChoiceWheelDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_single_choice_wheel_dialog, null);
+        TextView tvTitle = view.findViewById(R.id.tv_single_choice_wheel_dialog_title);
+        final WheelView wheelView = view.findViewById(R.id.wv_single_choice_wheel_dialog);
+        Button btnOk = view.findViewById(R.id.btn_single_choice_wheel_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_single_choice_wheel_dialog_cancel);
+
+        wheelView.setAdapter(new ArrayWheelAdapter(listData));
+        wheelView.setCyclic(false);
+        wheelView.setTextSize(18);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onSingleChoiceWheelDialogOkButtonClick((String) listData.get(wheelView.getCurrentItem()));
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();
+            }
+        });
+
+        dialogSet(view);
+    }
+
+    /**
+     * 时间选择器弹窗
+     * @param strTitle
+     * @param type       时间类型
+     * @param listener
+     */
+    @Override
+    public void showTimePickerWheelDialog(String strTitle, WheelTimeView.Type type, final OnTimePickerDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_time_picker_wheel_dialog, null);
+        TextView tvTitle = view.findViewById(R.id.tv_time_picker_wheel_dialog_title);
+        final WheelTimeView wheelTimeView = view.findViewById(R.id.wtv_time_picker_wheel_dialog);
+        Button btnOk = view.findViewById(R.id.btn_time_picker_wheel_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_time_picker_wheel_dialog_cancel);
+
+        //默认选中当前时间
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        wheelTimeView.setType(type);
+        wheelTimeView.setPicker(year, month, day, hours, minute);
+        wheelTimeView.setCyclic(false);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onTimePickerDialogOkButtonClick(wheelTimeView.getTimeWithZero());
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.setContentView(view);
+        dialog.getWindow().setLayout(Utils.getScreenWidthPX(mContext) / 6 * 5, LinearLayout.LayoutParams.WRAP_CONTENT);
+    }
+
+    /**
+     * 选项选择器弹窗
+     * @param strTitle
+     * @param listener
+     */
+    @Override
+    public void showOptionPickerWheelDialog(String strTitle,
+                                            ArrayList<String> optionsItems_1,
+                                            ArrayList<ArrayList<String>> optionsItems_2,
+                                            ArrayList<ArrayList<ArrayList<String>>> optionsItems_3,
+                                            String label1,
+                                            String label2,
+                                            String label3,
+                                            final OnOptionPickerDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_option_picker_wheel_dialog, null);
+        TextView tvTitle = view.findViewById(R.id.tv_option_picker_wheel_dialog_title);
+        final WheelOptionView wheelOptionView = view.findViewById(R.id.wov_option_picker_wheel_dialog);
+        Button btnOk = view.findViewById(R.id.btn_option_picker_wheel_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_option_picker_wheel_dialog_cancel);
+
+        wheelOptionView.setPicker(optionsItems_1, optionsItems_2, optionsItems_3, true);
+        wheelOptionView.setLabels(label1, label2, label3);
+        wheelOptionView.setCyclic(false);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onOptionPickerDialogOkButtonClick(wheelOptionView.getResult());
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.setContentView(view);
+        dialog.getWindow().setLayout(Utils.getScreenWidthPX(mContext) / 6 * 5, LinearLayout.LayoutParams.WRAP_CONTENT);
+    }
+
+    /*-----------------------------------滚轮弹窗END----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /**
@@ -839,5 +1049,29 @@ public class CommonPopupImpl implements CommonPopup
     public interface OnGuidanceTipsDialogClickListener
     {
         void onGuidanceTipsDialogOkButtonClick();        //引导提示弹窗-确定按钮点击事件
+    }
+
+    /**
+     * 单项选择列表滚轮弹窗-按钮点击事件接口
+     */
+    public interface OnSingleChoiceWheelDialogClickListener
+    {
+        void onSingleChoiceWheelDialogOkButtonClick(String value);        //单项选择列表滚轮弹窗-确定按钮点击事件
+    }
+
+    /**
+     * 时间选择器弹窗-按钮点击事件接口
+     */
+    public interface OnTimePickerDialogClickListener
+    {
+        void onTimePickerDialogOkButtonClick(String value);        //时间选择器弹窗-确定按钮点击事件
+    }
+
+    /**
+     * 选项选择器弹窗-按钮点击事件接口
+     */
+    public interface OnOptionPickerDialogClickListener
+    {
+        void onOptionPickerDialogOkButtonClick(String[] value);        //选项选择器弹窗-确定按钮点击事件
     }
 }
