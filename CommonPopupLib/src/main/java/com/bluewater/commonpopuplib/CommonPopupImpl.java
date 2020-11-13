@@ -1,5 +1,6 @@
 package com.bluewater.commonpopuplib;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -37,7 +38,7 @@ import java.util.List;
 public class CommonPopupImpl implements CommonPopup
 {
     private Context mContext;
-    private AlertDialog dialog;
+    private Dialog dialog;
 
     /**
      * 构造函数
@@ -49,7 +50,8 @@ public class CommonPopupImpl implements CommonPopup
         this.mContext = context;
 
         // 创建Dialog
-        dialog = new AlertDialog.Builder(mContext).create();
+        dialog = new Dialog(mContext);
+
         dialog.setCancelable(isCancel);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));     //设置为圆角后有阴影
         dialog.getWindow().setWindowAnimations(R.style.DialogAnimStyle);                    //自定义对话框弹出、关闭动画效果
@@ -153,6 +155,86 @@ public class CommonPopupImpl implements CommonPopup
 
     /*-----------------------------------基础弹窗END----------------------------------------*/
 
+
+
+    /*-----------------------------------警告弹窗----------------------------------------*/
+
+    /**
+     * 警告弹窗(含确认按钮点击事件)
+     *
+     * @param strTitle      标题
+     * @param strInfo       内容
+     */
+    @Override
+    public void showWarningDialog(String strTitle, String strInfo)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_warning_dialog, null);
+        TextView tvTitle = view.findViewById(R.id.tv_warning_dialog_title);
+        TextView tvInfo = view.findViewById(R.id.tv_warning_dialog_info);
+        Button btnOk = view.findViewById(R.id.btn_warning_dialog_ok);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        tvInfo.setText(strInfo);
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();                   //对话框消失
+            }
+        });
+
+        dialogSet(view);
+    }
+
+    /**
+     * 警告弹窗
+     *
+     * @param strTitle      标题
+     * @param strInfo       内容
+     * @param listener      确定按钮点击事件
+     */
+    @Override
+    public void showWarningDialog(String strTitle, String strInfo, final CommonPopupImpl.OnWarningDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_warning_dialog, null);
+        TextView tvTitle = view.findViewById(R.id.tv_warning_dialog_title);
+        TextView tvInfo = view.findViewById(R.id.tv_warning_dialog_info);
+        Button btnOk = view.findViewById(R.id.btn_warning_dialog_ok);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        tvInfo.setText(strInfo);
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onWarningDialogOkButtonClick();
+            }
+        });
+
+        dialogSet(view);
+    }
+
+    /*-----------------------------------警告弹窗END----------------------------------------*/
 
     /*-----------------------------------错误弹窗----------------------------------------*/
 
@@ -992,6 +1074,14 @@ public class CommonPopupImpl implements CommonPopup
     public interface OnBasicDialogClickListener
     {
         void onBasicDialogOkButtonClick();          //基础弹窗-确定按钮点击事件
+    }
+
+    /**
+     * 警告弹窗-按钮点击事件接口
+     */
+    public interface OnWarningDialogClickListener
+    {
+        void onWarningDialogOkButtonClick();          //警告弹窗-确定按钮点击事件
     }
 
     /**

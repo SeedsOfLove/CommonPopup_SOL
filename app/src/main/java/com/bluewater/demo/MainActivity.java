@@ -391,9 +391,17 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-
-
-
-
+    public void onClick17(View view)
+    {
+        final CommonPopup popup = new CommonPopupImpl(mContext, false);
+        popup.showWarningDialog("标题", "警告弹窗", new CommonPopupImpl.OnWarningDialogClickListener()
+        {
+            @Override
+            public void onWarningDialogOkButtonClick()
+            {
+                Toast.makeText(mContext, "点击了确定按钮", Toast.LENGTH_SHORT).show();
+                popup.dialogDismiss();      //弹窗消失
+            }
+        });
+    }
 }

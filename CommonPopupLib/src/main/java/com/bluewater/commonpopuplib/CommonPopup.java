@@ -18,6 +18,10 @@ public interface CommonPopup
     void showBasicDialog(String strTitle, String strInfo);
     void showBasicDialog(String strTitle, String strInfo, final CommonPopupImpl.OnBasicDialogClickListener listener);
 
+    //警告弹窗
+    void showWarningDialog(String strTitle, String strInfo);
+    void showWarningDialog(String strTitle, String strInfo, final CommonPopupImpl.OnWarningDialogClickListener listener);
+
     //错误弹窗
     void showErrorDialog(String strTitle, String strInfo);
     void showErrorDialog(String strTitle, String strInfo, final CommonPopupImpl.OnErrorDialogClickListener listener);
