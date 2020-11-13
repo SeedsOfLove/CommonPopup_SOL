@@ -9,57 +9,61 @@
 
 ![1.jpg](./img/1.jpg)
 
-错误弹窗
+警告弹窗
 
 ![2.jpg](./img/2.jpg)
 
-确认弹窗
+错误弹窗
 
 ![3.jpg](./img/3.jpg)
 
-加载弹窗
+确认弹窗
 
 ![4.jpg](./img/4.jpg)
 
-带进度的线型加载弹窗
+加载弹窗
 
 ![5.jpg](./img/5.jpg)
 
-带进度的圆圈加载弹窗
+带进度的线型加载弹窗
 
 ![6.jpg](./img/6.jpg)
 
-输入弹窗
+带进度的圆圈加载弹窗
 
 ![7.jpg](./img/7.jpg)
 
-下拉弹窗
+输入弹窗
 
 ![8.jpg](./img/8.jpg)
 
-单选弹窗
+下拉弹窗
 
 ![9.jpg](./img/9.jpg)
 
-多选弹窗
+单选弹窗
 
 ![10.jpg](./img/10.jpg)
 
-引导提示弹窗
+多选弹窗
 
 ![11.jpg](./img/11.jpg)
 
-单项选择列表滚轮弹窗
+引导提示弹窗
 
 ![12.jpg](./img/12.jpg)
 
-时间选择器弹窗
+单项选择列表滚轮弹窗
 
 ![13.jpg](./img/13.jpg)
 
-选项选择器弹窗
+时间选择器弹窗
 
 ![14.jpg](./img/14.jpg)
+
+选项选择器弹窗
+
+![15.jpg](./img/15.jpg)
 
 ## 使用方式
 ### Step 1. Add the JitPack repository to your build file
@@ -74,7 +78,7 @@ allprojects {
 ### Step 2. Add the dependency
 ```
 dependencies {
-        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.3'
+        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.4'
 	}
 ```
 ### Step 3. Using
@@ -82,6 +86,8 @@ dependencies {
 CommonPopup popup = new CommonPopupImpl(mContext, false);
 
 popup.showBasicDialog();				//基础弹窗
+
+popup.showWarningDialog();				//警告弹窗
 
 popup.showErrorDialog();				//错误弹窗
 
