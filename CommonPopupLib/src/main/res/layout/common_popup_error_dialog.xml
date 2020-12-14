@@ -20,7 +20,7 @@
         android:layout_marginBottom="5dp"
         android:text="错误"
         android:textSize="20sp"
-        android:textColor="@color/colorFont_black"
+        android:textColor="@color/cp_colorFont_black"
         android:textStyle="bold"/>
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:textSize="16sp"
-        android:textColor="@color/colorFont_gray"/>
+        android:textColor="@color/cp_colorFont_gray"/>
 
     <Button
         android:id="@+id/btn_error_dialog_ok"
@@ -43,7 +43,7 @@
         android:layout_margin="10dp"
         android:text="确定"
         android:textSize="15sp"
-        android:textColor="@color/colorFont_black"
+        android:textColor="@color/cp_colorFont_black"
         android:background="@drawable/popup_button_bg_gray"/>
 
 </LinearLayout>

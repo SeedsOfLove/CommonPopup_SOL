@@ -14,7 +14,7 @@
         android:layout_marginTop="20dp"
         android:text="提示"
         android:textSize="20sp"
-        android:textColor="@color/colorFont_black"
+        android:textColor="@color/cp_colorFont_black"
         android:textStyle="bold"/>
 
     <com.bluewater.commonpopuplib.Wheel.lib.WheelOptionView
@@ -39,7 +39,7 @@
             android:layout_marginRight="50dp"
             android:text="确定"
             android:textSize="15sp"
-            android:textColor="@color/colorFont_black"
+            android:textColor="@color/cp_colorFont_black"
             android:background="@drawable/popup_button_bg_gray"/>
 
         <Button
@@ -48,7 +48,7 @@
             android:layout_height="40dp"
             android:text="取消"
             android:textSize="15sp"
-            android:textColor="@color/colorFont_black"
+            android:textColor="@color/cp_colorFont_black"
             android:background="@drawable/popup_button_bg_gray"/>
 
     </LinearLayout>

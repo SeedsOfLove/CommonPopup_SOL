@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorFont_black">#FF373737</color>
-    <color name="colorFont_gray">#A9A9A9</color>
+    <color name="cp_colorFont_black">#FF373737</color>
+    <color name="cp_colorFont_gray">#A9A9A9</color>
 
-    <color name="color_bg_gray">#C9CED1</color>
+    <color name="cp_color_bg_gray">#C9CED1</color>
 
-    <color name="color_pale_orange">#FFA54F</color>
-    <color name="color_pale_dark_orange">#FF8C00</color>
-    <color name="color_pale_blue">#1296DB</color>
+    <color name="cp_color_pale_orange">#FFA54F</color>
+    <color name="cp_color_pale_dark_orange">#FF8C00</color>
+    <color name="cp_color_pale_blue">#1296DB</color>
 
     <color name="pickerview_timebtn_nor">#057dff</color>
     <color name="pickerview_timebtn_pre">#c2daf5</color>

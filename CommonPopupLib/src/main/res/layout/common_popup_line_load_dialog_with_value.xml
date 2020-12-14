@@ -17,7 +17,7 @@
         android:layout_marginTop="10dp"
         android:text="提示"
         android:textSize="20sp"
-        android:textColor="@color/colorFont_black"
+        android:textColor="@color/cp_colorFont_black"
         android:textStyle="bold"/>
 
     <com.bluewater.commonpopuplib.progress.HorizontalProgressBar

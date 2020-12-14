@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:text="提示"
         android:textSize="20sp"
-        android:textColor="@color/colorFont_black"
+        android:textColor="@color/cp_colorFont_black"
         android:textStyle="bold"/>
 
     <com.bluewater.commonpopuplib.progress.DonutProgressBar
@@ -28,8 +28,8 @@
         android:layout_margin="20dp"
         app:donut_max="100"
         app:donut_progress="0"
-        app:donut_background_color="@color/color_pale_dark_orange"
-        app:donut_finished_color="@color/color_pale_orange"
+        app:donut_background_color="@color/cp_color_pale_dark_orange"
+        app:donut_finished_color="@color/cp_color_pale_orange"
         app:donut_text_color="@android:color/white"/>
 
 </LinearLayout>

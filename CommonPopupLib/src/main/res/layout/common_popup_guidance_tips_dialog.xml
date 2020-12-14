@@ -21,7 +21,7 @@
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="XXXXXXXX"
-        android:textColor="@color/colorFont_black"
+        android:textColor="@color/cp_colorFont_black"
         android:textSize="20sp"/>
 
     <RelativeLayout

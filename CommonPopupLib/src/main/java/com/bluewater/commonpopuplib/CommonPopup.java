@@ -38,6 +38,7 @@ public interface CommonPopup
 
     //输入弹窗
     void showEditDialog(String strTitle, final CommonPopupImpl.OnEditDialogClickListener listener);
+    void showEditDialog(String strTitle, String strContent, final CommonPopupImpl.OnEditDialogClickListener listener);
 
     //下拉弹窗
     void showSpinnerDialog(String strTitle, List<String> listData, final CommonPopupImpl.OnSpinnerDialogClickListener listener);

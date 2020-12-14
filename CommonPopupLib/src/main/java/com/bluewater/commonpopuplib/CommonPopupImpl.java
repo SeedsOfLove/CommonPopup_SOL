@@ -488,6 +488,58 @@ public class CommonPopupImpl implements CommonPopup
         dialogSet(view);
     }
 
+    /**
+     * 输入弹窗
+     * @param strTitle
+     * @param strContent
+     * @param listener
+     */
+    @Override
+    public void showEditDialog(String strTitle, String strContent, final OnEditDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_edit_dialog, null);
+
+        TextView tvTitle = view.findViewById(R.id.tv_edit_dialog_title);
+        final EditText editText = view.findViewById(R.id.et_edit_dialog);
+        Button btnOk = view.findViewById(R.id.btn_edit_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_edit_dialog_cancel);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        if (strContent != null)
+        {
+            editText.setText(strContent);
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onEditDialogOkButtonClick(editText.getText().toString());
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();
+            }
+        });
+
+        dialogSet(view);
+    }
+
     /*-----------------------------------输入弹窗END----------------------------------------*/
 
 
