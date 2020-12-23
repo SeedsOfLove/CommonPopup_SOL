@@ -2,9 +2,15 @@
 <resources>
 
     <!--对话框弹出、关闭动画效果-->
-    <style name="DialogAnimStyle" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/dialog_anim_appear</item>
-        <item name="android:windowExitAnimation">@anim/dialog_anim_disappear</item>
+    <style name="DialogAnimStyle1" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_anim_appear1</item>
+        <item name="android:windowExitAnimation">@anim/dialog_anim_disappear1</item>
+    </style>
+
+    <!--对话框弹出、关闭动画效果-->
+    <style name="DialogAnimStyle2" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_anim_appear2</item>
+        <item name="android:windowExitAnimation">@anim/dialog_anim_disappear2</item>
     </style>
 
 </resources>

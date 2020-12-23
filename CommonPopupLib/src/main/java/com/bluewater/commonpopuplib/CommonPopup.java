@@ -68,8 +68,8 @@ public interface CommonPopup
                                      String label3,
                                      final CommonPopupImpl.OnOptionPickerDialogClickListener listener);
 
-
-
+    //底部选择弹窗
+    void showBottomSelectDialog(List<String> listItem, final CommonPopupImpl.OnBottomSelectDialogClickListener listener);
 
 
 

@@ -404,4 +404,24 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
+    public void onClick18(View view)
+    {
+        final CommonPopup popup = new CommonPopupImpl(mContext, false);
+
+        List<String> listItem = new ArrayList<>();
+        listItem.add("拍照");
+        listItem.add("从相册选择");
+        listItem.add("自定义");
+
+        popup.showBottomSelectDialog(listItem, new CommonPopupImpl.OnBottomSelectDialogClickListener()
+        {
+            @Override
+            public void onBottomSelectDialogItemClick(String value)
+            {
+                Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
+                popup.dialogDismiss();      //弹窗消失
+            }
+        });
+    }
 }

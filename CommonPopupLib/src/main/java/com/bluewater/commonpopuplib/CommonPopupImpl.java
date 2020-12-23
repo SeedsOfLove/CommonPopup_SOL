@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,7 +19,6 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bluewater.commonpopuplib.Wheel.adapter.ArrayWheelAdapter;
@@ -54,15 +54,21 @@ public class CommonPopupImpl implements CommonPopup
 
         dialog.setCancelable(isCancel);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));     //设置为圆角后有阴影
-        dialog.getWindow().setWindowAnimations(R.style.DialogAnimStyle);                    //自定义对话框弹出、关闭动画效果
-
     }
 
-    private void dialogSet(View view)
+    /**
+     * 弹窗配置
+     * @param view
+     * @param animResId     动画
+     * @param width         宽
+     * @param height        高
+     */
+    private void dialogSet(View view, int animResId, int width, int height)
     {
+        dialog.getWindow().setWindowAnimations(animResId);      //自定义对话框弹出、关闭动画效果
         dialog.show();
         dialog.setContentView(view);
-        dialog.getWindow().setLayout(Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT);//设置弹出框宽度为屏幕高度的四分之三
+        dialog.getWindow().setLayout(width, height);
     }
 
     /**
@@ -111,7 +117,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /**
@@ -150,7 +157,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------基础弹窗END----------------------------------------*/
@@ -193,7 +201,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /**
@@ -231,7 +240,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------警告弹窗END----------------------------------------*/
@@ -268,7 +278,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /**
@@ -302,7 +313,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------错误弹窗END----------------------------------------*/
@@ -356,7 +368,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------是否确认弹窗END----------------------------------------*/
@@ -378,7 +391,8 @@ public class CommonPopupImpl implements CommonPopup
 
         tvInfo.setText(strInfo);
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /**
@@ -404,7 +418,8 @@ public class CommonPopupImpl implements CommonPopup
             tvInfo.setText(strInfo);
         }
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
 
         return horizontalProgressBar;
     }
@@ -432,7 +447,8 @@ public class CommonPopupImpl implements CommonPopup
             tvInfo.setText(strInfo);
         }
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
 
         return donutProgressBar;
     }
@@ -485,7 +501,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /**
@@ -537,7 +554,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------输入弹窗END----------------------------------------*/
@@ -609,7 +627,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------下拉弹窗END----------------------------------------*/
@@ -685,7 +704,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------单选弹窗END----------------------------------------*/
@@ -768,7 +788,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------多选弹窗END----------------------------------------*/
@@ -907,7 +928,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /*-----------------------------------引导提示弹窗END----------------------------------------*/
@@ -949,7 +971,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                listener.onSingleChoiceWheelDialogOkButtonClick((String) listData.get(wheelView.getCurrentItem()));
+                listener.onSingleChoiceWheelDialogOkButtonClick(listData.get(wheelView.getCurrentItem()));
             }
         });
 
@@ -962,7 +984,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialogSet(view);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
     /**
@@ -1021,9 +1044,8 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialog.show();
-        dialog.setContentView(view);
-        dialog.getWindow().setLayout(Utils.getScreenWidthPX(mContext) / 6 * 5, LinearLayout.LayoutParams.WRAP_CONTENT);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 6 * 5, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的六分之五
     }
 
     /**
@@ -1079,12 +1101,76 @@ public class CommonPopupImpl implements CommonPopup
             }
         });
 
-        dialog.show();
-        dialog.setContentView(view);
-        dialog.getWindow().setLayout(Utils.getScreenWidthPX(mContext) / 6 * 5, LinearLayout.LayoutParams.WRAP_CONTENT);
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 6 * 5, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的六分之五
     }
 
     /*-----------------------------------滚轮弹窗END----------------------------------------*/
+
+    /*-----------------------------------底部选择弹窗----------------------------------------*/
+
+    @Override
+    public void showBottomSelectDialog(List<String> listItem, final OnBottomSelectDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_bottom_select_dialog, null);
+
+        LinearLayout linearLayout = view.findViewById(R.id.ll_bottom_select_dialog);
+        TextView tvCancel = view.findViewById(R.id.tv_bottom_select_dialog_cancel);
+
+        for (int i = 0; i < listItem.size(); i++)
+        {
+            String itemName = listItem.get(i);
+
+            final TextView textView = new TextView(mContext);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            textView.setLayoutParams(layoutParams);
+
+            textView.setText(itemName);
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextSize(18);
+            textView.setTextColor(mContext.getResources().getColor(R.color.cp_color_pale_blue));
+            textView.setBackground(mContext.getResources().getDrawable(R.drawable.round_corner_bg_white2, null));
+            textView.setPadding(10, 50, 10, 50);
+
+            textView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    listener.onBottomSelectDialogItemClick(textView.getText().toString());
+                }
+            });
+
+            linearLayout.addView(textView);
+        }
+
+        tvCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();
+            }
+        });
+
+        dialogSet(view, R.style.DialogAnimStyle2,
+                Utils.getScreenWidthPX(mContext) / 8 * 7, LinearLayout.LayoutParams.MATCH_PARENT); //设置弹出框宽度为屏幕高度的六分之五
+    }
+    /*-----------------------------------底部选择弹窗END----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1215,5 +1301,13 @@ public class CommonPopupImpl implements CommonPopup
     public interface OnOptionPickerDialogClickListener
     {
         void onOptionPickerDialogOkButtonClick(String[] value);        //选项选择器弹窗-确定按钮点击事件
+    }
+
+    /**
+     * 底部选择弹窗-按钮点击事件接口
+     */
+    public interface OnBottomSelectDialogClickListener
+    {
+        void onBottomSelectDialogItemClick(String value);        //底部选择弹窗-item点击事件
     }
 }

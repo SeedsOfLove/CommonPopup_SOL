@@ -65,6 +65,10 @@
 
 ![15.jpg](./img/15.jpg)
 
+底部选择弹窗
+
+![16.jpg](./img/16.jpg)
+
 ## 使用方式
 ### Step 1. Add the JitPack repository to your build file
 ```
@@ -78,7 +82,7 @@ allprojects {
 ### Step 2. Add the dependency
 ```
 dependencies {
-        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.6'
+        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.7'
 	}
 ```
 ### Step 3. Using
@@ -115,6 +119,7 @@ popup.showTimePickerWheelDialog();		//时间选择器弹窗
 
 popup.showOptionPickerWheelDialog();	//选项选择器弹窗
 
+popup.showBottomSelectDialog();	        //底部选择弹窗
 
 popup.dialogDismiss();	//弹窗消失
 ```

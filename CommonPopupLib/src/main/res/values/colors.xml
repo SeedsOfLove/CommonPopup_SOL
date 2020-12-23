@@ -9,6 +9,7 @@
     <color name="cp_color_pale_orange">#FFA54F</color>
     <color name="cp_color_pale_dark_orange">#FF8C00</color>
     <color name="cp_color_pale_blue">#1296DB</color>
+    <color name="cp_color_pale_red">#DB1229</color>
 
     <color name="pickerview_timebtn_nor">#057dff</color>
     <color name="pickerview_timebtn_pre">#c2daf5</color>
