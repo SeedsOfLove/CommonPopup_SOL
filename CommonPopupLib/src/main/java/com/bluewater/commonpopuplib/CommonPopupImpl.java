@@ -1131,8 +1131,27 @@ public class CommonPopupImpl implements CommonPopup
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(18);
             textView.setTextColor(mContext.getResources().getColor(R.color.cp_color_pale_blue));
-            textView.setBackground(mContext.getResources().getDrawable(R.drawable.round_corner_bg_white2, null));
-            textView.setPadding(10, 50, 10, 50);
+            textView.setPadding(10, 30, 10, 30);
+
+            //分割线
+            if (i == 0)
+            {
+                layoutParams.setMargins(0, 0, 0, 0);
+                textView.setBackground(mContext.getResources().getDrawable(R.drawable.round_corner_bg_white2_up, null));    //第一个上半部分圆角
+            }
+            else
+            {
+                layoutParams.setMargins(0, 2, 0, 0);
+
+                if (i == (listItem.size() - 1))     //
+                {
+                    textView.setBackground(mContext.getResources().getDrawable(R.drawable.round_corner_bg_white2_down, null));  //最后一个下半部分圆角
+                }
+                else
+                {
+                    textView.setBackgroundColor(mContext.getResources().getColor(R.color.cp_white));
+                }
+            }
 
             textView.setOnClickListener(new View.OnClickListener()
             {
