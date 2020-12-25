@@ -31,7 +31,6 @@
         android:textSize="15sp"
         android:inputType="text"
         android:lines="1"
-        android:text="asadada"
         android:background="@drawable/round_corner_bg_white_frame"/>
 
     <LinearLayout
