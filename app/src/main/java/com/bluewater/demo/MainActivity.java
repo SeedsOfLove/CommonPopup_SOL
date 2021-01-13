@@ -29,13 +29,27 @@ public class MainActivity extends AppCompatActivity
         this.mContext = this;
     }
 
-    public void onClick3(View view)
+    public void onClick2(View view)
     {
         final CommonPopup popup = new CommonPopupImpl(mContext, false);
-        popup.showBasicDialog("标题", "基础弹窗", new CommonPopupImpl.OnBasicDialogClickListener()
+        popup.showBasicDialog("标题", "基础弹窗", getDrawable(R.mipmap.alert_dialog_icon), new CommonPopupImpl.OnBasicDialogClickListener()
         {
             @Override
             public void onBasicDialogOkButtonClick()
+            {
+                Toast.makeText(mContext, "点击了确定按钮", Toast.LENGTH_SHORT).show();
+                popup.dialogDismiss();      //弹窗消失
+            }
+        });
+    }
+
+    public void onClick3(View view)
+    {
+        final CommonPopup popup = new CommonPopupImpl(mContext, false);
+        popup.showSuccessDialog("标题", "成功弹窗", new CommonPopupImpl.OnSuccessDialogClickListener()
+        {
+            @Override
+            public void onSuccessDialogOkButtonClick()
             {
                 Toast.makeText(mContext, "点击了确定按钮", Toast.LENGTH_SHORT).show();
                 popup.dialogDismiss();      //弹窗消失

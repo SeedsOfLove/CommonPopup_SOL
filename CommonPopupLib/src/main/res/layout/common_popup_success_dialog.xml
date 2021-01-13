@@ -6,26 +6,25 @@
     android:background="@drawable/round_corner_bg_white">
 
     <ImageView
-        android:id="@+id/iv_confirm_dialog_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_gravity="center"
-        android:src="@mipmap/alert_dialog_confirm"/>
+        android:src="@mipmap/alert_dialog_success"/>
 
     <TextView
-        android:id="@+id/tv_confirm_dialog_title"
+        android:id="@+id/tv_success_dialog_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginBottom="5dp"
-        android:text="   是否确定？"
+        android:text="提示"
         android:textSize="20sp"
         android:textColor="@color/cp_colorFont_black"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/tv_confirm_dialog_info"
+        android:id="@+id/tv_success_dialog_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="XXXXXXXXXXXXXXXXXXXXXXXX"
@@ -36,32 +35,15 @@
         android:textSize="16sp"
         android:textColor="@color/cp_colorFont_gray"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btn_success_dialog_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:padding="2dp"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btn_confirm_dialog_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginRight="50dp"
-            android:text="确定"
-            android:textSize="15sp"
-            android:textColor="@color/cp_colorFont_black"
-            android:background="@drawable/popup_button_bg_gray"/>
-
-        <Button
-            android:id="@+id/btn_confirm_dialog_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="取消"
-            android:textSize="15sp"
-            android:textColor="@color/cp_colorFont_black"
-            android:background="@drawable/popup_button_bg_gray"/>
-
-    </LinearLayout>
+        android:text="确定"
+        android:textSize="15sp"
+        android:textColor="@color/cp_colorFont_black"
+        android:background="@drawable/popup_button_bg_gray"/>
 
 </LinearLayout>

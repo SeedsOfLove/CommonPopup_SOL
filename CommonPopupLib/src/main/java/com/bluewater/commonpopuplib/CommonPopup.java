@@ -1,5 +1,7 @@
 package com.bluewater.commonpopuplib;
 
+import android.graphics.drawable.Drawable;
+
 import com.bluewater.commonpopuplib.Wheel.lib.WheelTimeView;
 import com.bluewater.commonpopuplib.progress.DonutProgressBar;
 import com.bluewater.commonpopuplib.progress.HorizontalProgressBar;
@@ -15,8 +17,12 @@ public interface CommonPopup
     void dialogDismiss();   //弹窗消失
 
     //基础弹窗
-    void showBasicDialog(String strTitle, String strInfo);
-    void showBasicDialog(String strTitle, String strInfo, final CommonPopupImpl.OnBasicDialogClickListener listener);
+    void showBasicDialog(String strTitle, String strInfo, Drawable drawable);
+    void showBasicDialog(String strTitle, String strInfo, Drawable drawable, final CommonPopupImpl.OnBasicDialogClickListener listener);
+
+    //成功弹窗
+    void showSuccessDialog(String strTitle, String strInfo);
+    void showSuccessDialog(String strTitle, String strInfo, final CommonPopupImpl.OnSuccessDialogClickListener listener);
 
     //警告弹窗
     void showWarningDialog(String strTitle, String strInfo);
@@ -28,6 +34,7 @@ public interface CommonPopup
 
     //确认弹窗
     void showConfirmDialog(String strTitle, String strInfo, final CommonPopupImpl.OnConfirmDialogClickListener listener);
+    void showConfirmDialog(String strTitle, String strInfo, Drawable drawable, final CommonPopupImpl.OnConfirmDialogClickListener listener);
 
     //加载弹窗
     void showLoadDialog(String strInfo);

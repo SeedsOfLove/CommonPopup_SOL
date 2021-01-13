@@ -7,6 +7,10 @@
 
 基础弹窗
 
+![0.jpg](./img/0.jpg)
+
+成功弹窗
+
 ![1.jpg](./img/1.jpg)
 
 警告弹窗
@@ -82,7 +86,7 @@ allprojects {
 ### Step 2. Add the dependency
 ```
 dependencies {
-        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.0.9'
+        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.1.0'
 	}
 ```
 ### Step 3. Using
@@ -90,6 +94,8 @@ dependencies {
 CommonPopup popup = new CommonPopupImpl(mContext, false);
 
 popup.showBasicDialog();				//基础弹窗
+
+popup.showSuccessDialog();				//成功弹窗
 
 popup.showWarningDialog();				//警告弹窗
 

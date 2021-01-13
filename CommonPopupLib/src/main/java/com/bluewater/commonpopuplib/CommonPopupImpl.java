@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -85,18 +86,24 @@ public class CommonPopupImpl implements CommonPopup
 
     /**
      * 基础弹窗
-     *
-     * @param strTitle      标题
-     * @param strInfo       内容
+     * @param strTitle  标题
+     * @param strInfo   内容
+     * @param drawable  图标
      */
     @Override
-    public void showBasicDialog(String strTitle, String strInfo)
+    public void showBasicDialog(String strTitle, String strInfo, Drawable drawable)
     {
         // 加载布局文件
         View view = View.inflate(mContext, R.layout.common_popup_basic_dialog, null);
+        ImageView icon = view.findViewById(R.id.iv_basic_dialog_icon);
         TextView tvTitle = view.findViewById(R.id.tv_basic_dialog_title);
         TextView tvInfo = view.findViewById(R.id.tv_basic_dialog_info);
         Button btnOk = view.findViewById(R.id.btn_basic_dialog_ok);
+
+        if (drawable != null)
+        {
+            icon.setImageDrawable(drawable);
+        }
 
         if (strTitle == null)
         {
@@ -122,20 +129,109 @@ public class CommonPopupImpl implements CommonPopup
     }
 
     /**
-     * 基础弹窗(含确认按钮点击事件)
+     * 基础弹窗
+     * @param strTitle  标题
+     * @param strInfo   内容
+     * @param drawable  图标
+     * @param listener  确定按钮点击事件
+     */
+    @Override
+    public void showBasicDialog(String strTitle, String strInfo, Drawable drawable, final OnBasicDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_basic_dialog, null);
+        ImageView icon = view.findViewById(R.id.iv_basic_dialog_icon);
+        TextView tvTitle = view.findViewById(R.id.tv_basic_dialog_title);
+        TextView tvInfo = view.findViewById(R.id.tv_basic_dialog_info);
+        Button btnOk = view.findViewById(R.id.btn_basic_dialog_ok);
+
+        if (drawable != null)
+        {
+            icon.setImageDrawable(drawable);
+        }
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        tvInfo.setText(strInfo);
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onBasicDialogOkButtonClick();
+            }
+        });
+
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
+    }
+
+    /*-----------------------------------基础弹窗END----------------------------------------*/
+
+
+
+    /*-----------------------------------成功弹窗----------------------------------------*/
+
+    /**
+     * 成功弹窗
+     *
+     * @param strTitle      标题
+     * @param strInfo       内容
+     */
+    @Override
+    public void showSuccessDialog(String strTitle, String strInfo)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_success_dialog, null);
+        TextView tvTitle = view.findViewById(R.id.tv_success_dialog_title);
+        TextView tvInfo = view.findViewById(R.id.tv_success_dialog_info);
+        Button btnOk = view.findViewById(R.id.btn_success_dialog_ok);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        tvInfo.setText(strInfo);
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.dismiss();                   //对话框消失
+            }
+        });
+
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
+    }
+
+    /**
+     * 成功弹窗(含确认按钮点击事件)
      *
      * @param strTitle      标题
      * @param strInfo       内容
      * @param listener      确定按钮点击事件
      */
     @Override
-    public void showBasicDialog(String strTitle, String strInfo, final OnBasicDialogClickListener listener)
+    public void showSuccessDialog(String strTitle, String strInfo, final OnSuccessDialogClickListener listener)
     {
         // 加载布局文件
-        View view = View.inflate(mContext, R.layout.common_popup_basic_dialog, null);
-        TextView tvTitle = view.findViewById(R.id.tv_basic_dialog_title);
-        TextView tvInfo = view.findViewById(R.id.tv_basic_dialog_info);
-        Button btnOk = view.findViewById(R.id.btn_basic_dialog_ok);
+        View view = View.inflate(mContext, R.layout.common_popup_success_dialog, null);
+        TextView tvTitle = view.findViewById(R.id.tv_success_dialog_title);
+        TextView tvInfo = view.findViewById(R.id.tv_success_dialog_info);
+        Button btnOk = view.findViewById(R.id.btn_success_dialog_ok);
 
         if (strTitle == null)
         {
@@ -153,7 +249,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                listener.onBasicDialogOkButtonClick();
+                listener.onSuccessDialogOkButtonClick();
             }
         });
 
@@ -161,7 +257,7 @@ public class CommonPopupImpl implements CommonPopup
                 Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
-    /*-----------------------------------基础弹窗END----------------------------------------*/
+    /*-----------------------------------成功弹窗END----------------------------------------*/
 
 
 
@@ -338,6 +434,63 @@ public class CommonPopupImpl implements CommonPopup
         TextView tvInfo = view.findViewById(R.id.tv_confirm_dialog_info);
         Button btnOk = view.findViewById(R.id.btn_confirm_dialog_ok);
         Button btnCancel = view.findViewById(R.id.btn_confirm_dialog_cancel);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        tvInfo.setText(strInfo);
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onConfirmDialogOkButtonClick();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onConfirmDialogCancelButtonClick();
+            }
+        });
+
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
+    }
+
+    /**
+     * 是否确认弹窗
+     *
+     * @param strTitle      标题
+     * @param strInfo       内容
+     * @param drawable      图标
+     * @param listener      确定按钮点击事件
+     */
+    @Override
+    public void showConfirmDialog(String strTitle, String strInfo, Drawable drawable, final OnConfirmDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_confirm_dialog, null);
+        ImageView icon = view.findViewById(R.id.iv_confirm_dialog_icon);
+        TextView tvTitle = view.findViewById(R.id.tv_confirm_dialog_title);
+        TextView tvInfo = view.findViewById(R.id.tv_confirm_dialog_info);
+        Button btnOk = view.findViewById(R.id.btn_confirm_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_confirm_dialog_cancel);
+
+        if (drawable != null)
+        {
+            icon.setImageDrawable(drawable);
+        }
 
         if (strTitle == null)
         {
@@ -1222,15 +1375,20 @@ public class CommonPopupImpl implements CommonPopup
 
 
 
-
-
-
     /**
      * 基础弹窗-按钮点击事件接口
      */
     public interface OnBasicDialogClickListener
     {
         void onBasicDialogOkButtonClick();          //基础弹窗-确定按钮点击事件
+    }
+
+    /**
+     * 成功弹窗-按钮点击事件接口
+     */
+    public interface OnSuccessDialogClickListener
+    {
+        void onSuccessDialogOkButtonClick();          //成功弹窗-确定按钮点击事件
     }
 
     /**
