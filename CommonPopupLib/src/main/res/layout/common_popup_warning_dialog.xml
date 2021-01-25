@@ -38,7 +38,7 @@
     <Button
         android:id="@+id/btn_warning_dialog_ok"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="32dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:text="确定"

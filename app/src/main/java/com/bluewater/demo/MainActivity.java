@@ -110,6 +110,12 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(mContext, editBack, Toast.LENGTH_SHORT).show();
                 popup.dialogDismiss();      //弹窗消失
             }
+
+            @Override
+            public void onEditDialogCancelButtonClick()
+            {
+                popup.dialogDismiss();      //弹窗消失
+            }
         });
     }
 
@@ -130,6 +136,12 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
                 popup.dialogDismiss();      //弹窗消失
             }
+
+            @Override
+            public void onSpinnerDialogCancelButtonClick()
+            {
+                popup.dialogDismiss();      //弹窗消失
+            }
         });
     }
 
@@ -148,6 +160,12 @@ public class MainActivity extends AppCompatActivity
             public void onSingleChoiceDialogOkButtonClick(String value)
             {
                 Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
+                popup.dialogDismiss();      //弹窗消失
+            }
+
+            @Override
+            public void onSingleChoiceDialogCancelButtonClick()
+            {
                 popup.dialogDismiss();      //弹窗消失
             }
         });
@@ -174,6 +192,12 @@ public class MainActivity extends AppCompatActivity
                 }
 
                 Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
+                popup.dialogDismiss();      //弹窗消失
+            }
+
+            @Override
+            public void onMultipleChoiceDialogCancelButtonClick()
+            {
                 popup.dialogDismiss();      //弹窗消失
             }
         });
@@ -282,6 +306,12 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
                 popup.dialogDismiss(); //弹窗消失
             }
+
+            @Override
+            public void onSingleChoiceWheelDialogCancelButtonClick()
+            {
+                popup.dialogDismiss();      //弹窗消失
+            }
         });
 
     }
@@ -296,6 +326,12 @@ public class MainActivity extends AppCompatActivity
             {
                 Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
                 popup.dialogDismiss(); //弹窗消失
+            }
+
+            @Override
+            public void onTimePickerDialogCancelButtonClick()
+            {
+                popup.dialogDismiss();      //弹窗消失
             }
         });
 
@@ -400,6 +436,12 @@ public class MainActivity extends AppCompatActivity
                         String result = value[0] + "省" + value[1] + "市" + value[2];
                         Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
                         popup.dialogDismiss(); //弹窗消失
+                    }
+
+                    @Override
+                    public void onOptionPickerDialogCancelButtonClick()
+                    {
+                        popup.dialogDismiss();      //弹窗消失
                     }
                 });
 

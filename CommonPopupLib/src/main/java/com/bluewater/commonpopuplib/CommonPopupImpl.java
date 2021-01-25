@@ -650,7 +650,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onEditDialogCancelButtonClick();
             }
         });
 
@@ -703,7 +703,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onEditDialogCancelButtonClick();
             }
         });
 
@@ -776,7 +776,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onSpinnerDialogCancelButtonClick();
             }
         });
 
@@ -853,7 +853,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onSingleChoiceDialogCancelButtonClick();
             }
         });
 
@@ -937,7 +937,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onMultipleChoiceDialogCancelButtonClick();
             }
         });
 
@@ -1133,7 +1133,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onSingleChoiceWheelDialogCancelButtonClick();
             }
         });
 
@@ -1193,7 +1193,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onTimePickerDialogCancelButtonClick();
             }
         });
 
@@ -1250,7 +1250,7 @@ public class CommonPopupImpl implements CommonPopup
             @Override
             public void onClick(View view)
             {
-                dialog.dismiss();
+                listener.onOptionPickerDialogCancelButtonClick();
             }
         });
 
@@ -1422,6 +1422,7 @@ public class CommonPopupImpl implements CommonPopup
     public interface OnEditDialogClickListener
     {
         void onEditDialogOkButtonClick(String editBack);        //输入弹窗-确定按钮点击事件
+        void onEditDialogCancelButtonClick();                   //输入弹窗-取消按钮点击事件
     }
 
     /**
@@ -1430,6 +1431,7 @@ public class CommonPopupImpl implements CommonPopup
     public interface OnSpinnerDialogClickListener
     {
         void onSpinnerDialogOkButtonClick(String value);        //下拉弹窗-确定按钮点击事件
+        void onSpinnerDialogCancelButtonClick();                //下拉弹窗-取消按钮点击事件
     }
 
     /**
@@ -1438,6 +1440,7 @@ public class CommonPopupImpl implements CommonPopup
     public interface OnSingleChoiceDialogClickListener
     {
         void onSingleChoiceDialogOkButtonClick(String value);        //单选弹窗-确定按钮点击事件
+        void onSingleChoiceDialogCancelButtonClick();               //单选弹窗-取消按钮点击事件
     }
 
     /**
@@ -1445,7 +1448,8 @@ public class CommonPopupImpl implements CommonPopup
      */
     public interface OnMultipleChoiceDialogClickListener
     {
-        void onMultipleChoiceDialogOkButtonClick(List<String> listResult);        //多选弹窗-确定按钮点击事件
+        void onMultipleChoiceDialogOkButtonClick(List<String> listResult);      //多选弹窗-确定按钮点击事件
+        void onMultipleChoiceDialogCancelButtonClick();                         //多选弹窗-取消按钮点击事件
     }
 
     /**
@@ -1461,7 +1465,8 @@ public class CommonPopupImpl implements CommonPopup
      */
     public interface OnSingleChoiceWheelDialogClickListener
     {
-        void onSingleChoiceWheelDialogOkButtonClick(String value);        //单项选择列表滚轮弹窗-确定按钮点击事件
+        void onSingleChoiceWheelDialogOkButtonClick(String value);      //单项选择列表滚轮弹窗-确定按钮点击事件
+        void onSingleChoiceWheelDialogCancelButtonClick();              //单项选择列表滚轮弹窗-取消按钮点击事件
     }
 
     /**
@@ -1469,7 +1474,8 @@ public class CommonPopupImpl implements CommonPopup
      */
     public interface OnTimePickerDialogClickListener
     {
-        void onTimePickerDialogOkButtonClick(String value);        //时间选择器弹窗-确定按钮点击事件
+        void onTimePickerDialogOkButtonClick(String value);     //时间选择器弹窗-确定按钮点击事件
+        void onTimePickerDialogCancelButtonClick();             //时间选择器弹窗-取消按钮点击事件
     }
 
     /**
@@ -1477,7 +1483,8 @@ public class CommonPopupImpl implements CommonPopup
      */
     public interface OnOptionPickerDialogClickListener
     {
-        void onOptionPickerDialogOkButtonClick(String[] value);        //选项选择器弹窗-确定按钮点击事件
+        void onOptionPickerDialogOkButtonClick(String[] value);     //选项选择器弹窗-确定按钮点击事件
+        void onOptionPickerDialogCancelButtonClick();               //选项选择器弹窗-取消按钮点击事件
     }
 
     /**
