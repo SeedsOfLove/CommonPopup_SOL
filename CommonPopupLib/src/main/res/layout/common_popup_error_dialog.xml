@@ -23,17 +23,25 @@
         android:textColor="@color/cp_colorFont_black"
         android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/tv_error_dialog_info"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="XXXXXXXXXXXXXXXXXXXXXXXX"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:textSize="16sp"
-        android:textColor="@color/cp_colorFont_gray"/>
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/tv_error_dialog_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XXXXXXXXXXXXXXXXXXXXXXXX"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/cp_colorFont_gray"/>
+
+    </ScrollView>
 
     <Button
         android:id="@+id/btn_error_dialog_ok"
