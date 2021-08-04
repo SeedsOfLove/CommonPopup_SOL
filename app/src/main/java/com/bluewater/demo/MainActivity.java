@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity
     public void onClick15(View view)
     {
         final CommonPopup popup = new CommonPopupImpl(mContext, false);
-        popup.showTimePickerWheelDialog("请选择日期", WheelTimeView.Type.ALL, new CommonPopupImpl.OnTimePickerDialogClickListener()
+        popup.showTimePickerWheelDialog("请选择日期", WheelTimeView.Type.MONTH, new CommonPopupImpl.OnTimePickerDialogClickListener()
         {
             @Override
             public void onTimePickerDialogOkButtonClick(String value)

@@ -24,7 +24,7 @@ public class WheelTimeView extends LinearLayout
     // 选择模式——年月日时分，年月日，年月日时 , 时分，月日时分 ,年月
     public enum Type
     {
-        ALL, YEAR_MONTH_DAY, YEAR_MONTH_DAY_HOUR, HOURS_MINS, MONTH_DAY_HOUR_MIN, YEAR_MONTH
+        ALL, YEAR_MONTH_DAY, YEAR_MONTH_DAY_HOUR, HOURS_MINS, MONTH_DAY_HOUR_MIN, YEAR_MONTH, YEAR, MONTH
     }
 
     public static final int DEFULT_START_YEAR = 1990;
@@ -254,6 +254,21 @@ public class WheelTimeView extends LinearLayout
                 wv_day.setVisibility(View.GONE);
                 wv_hours.setVisibility(View.GONE);
                 wv_mins.setVisibility(View.GONE);
+                break;
+            case YEAR:
+                textSize = textSize * 5;
+                wv_month.setVisibility(View.GONE);
+                wv_day.setVisibility(View.GONE);
+                wv_hours.setVisibility(View.GONE);
+                wv_mins.setVisibility(View.GONE);
+                break;
+            case MONTH:
+                textSize = textSize * 5;
+                wv_year.setVisibility(View.GONE);
+                wv_day.setVisibility(View.GONE);
+                wv_hours.setVisibility(View.GONE);
+                wv_mins.setVisibility(View.GONE);
+                break;
         }
         setTextSize(textSize);
     }
@@ -337,6 +352,12 @@ public class WheelTimeView extends LinearLayout
             case YEAR_MONTH:
                 result = year + "-" + month;
                 break;
+            case YEAR:
+                result = year;
+                break;
+            case MONTH:
+                result = month;
+                break;
         }
 
         return result;
@@ -375,6 +396,12 @@ public class WheelTimeView extends LinearLayout
                 break;
             case YEAR_MONTH:
                 result = year + "-" + month;
+                break;
+            case YEAR:
+                result = year;
+                break;
+            case MONTH:
+                result = month;
                 break;
         }
 
