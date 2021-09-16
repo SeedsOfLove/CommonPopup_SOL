@@ -52,9 +52,11 @@ public interface CommonPopup
 
     //单选弹窗
     void showSingleChoiceDialog(String strTitle, List<String> listData, final CommonPopupImpl.OnSingleChoiceDialogClickListener listener);
+    void showSingleChoiceDialog(String strTitle, List<String> listData, String strChoiced, final CommonPopupImpl.OnSingleChoiceDialogClickListener listener);
 
     //多选弹窗
     void showMultipleChoiceDialog(String strTitle, List<String> listData, final CommonPopupImpl.OnMultipleChoiceDialogClickListener listener);
+    void showMultipleChoiceDialog(String strTitle, List<String> listData, List<String> listChoiced, final CommonPopupImpl.OnMultipleChoiceDialogClickListener listener);
 
     //引导提示弹窗
     void showGuidanceTipsDialog(final int[] imgs, final int[] tips, String btnName, final CommonPopupImpl.OnGuidanceTipsDialogClickListener listener);

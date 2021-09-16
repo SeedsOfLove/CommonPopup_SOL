@@ -861,6 +861,87 @@ public class CommonPopupImpl implements CommonPopup
                 Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
     }
 
+    /**
+     * 单选弹窗（带初始值）
+     * @param strTitle
+     * @param listData
+     * @param strChoiced    已选择的项
+     * @param listener
+     */
+    @Override
+    public void showSingleChoiceDialog(String strTitle, List<String> listData, String strChoiced, final OnSingleChoiceDialogClickListener listener)
+    {
+        final String[] strSelectValue = new String[1];
+
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_single_choice_dialog, null);
+
+        TextView tvTitle = view.findViewById(R.id.tv_single_choice_dialog_title);
+        RadioGroup radioGroup = view.findViewById(R.id.rg_single_choice_dialog);
+        Button btnOk = view.findViewById(R.id.btn_single_choice_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_single_choice_dialog_cancel);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        for (int i = 0; i < listData.size(); i++)
+        {
+            final String data = listData.get(i);
+
+            final RadioButton radioButton = new RadioButton(mContext);
+
+            RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, 0, 0, 10);    //设置RadioButton边距
+
+            radioButton.setText(data);
+            radioButton.setId(i);   //每个RadioButton设置一个id, 用于实现默认选中
+            radioButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    strSelectValue[0] = data;
+                }
+            });
+
+            radioGroup.addView(radioButton);
+
+            //设置默认选中项
+            if (data.equals(strChoiced))
+            {
+                strSelectValue[0] = data;
+                radioGroup.check(radioButton.getId());
+            }
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onSingleChoiceDialogOkButtonClick(strSelectValue[0]);
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onSingleChoiceDialogCancelButtonClick();
+            }
+        });
+
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
+    }
+
     /*-----------------------------------单选弹窗END----------------------------------------*/
 
 
@@ -869,7 +950,7 @@ public class CommonPopupImpl implements CommonPopup
     /**
      * 多选弹窗
      * @param strTitle
-     * @param listData
+     * @param listData  所有数据
      * @param listener
      */
     @Override
@@ -904,6 +985,97 @@ public class CommonPopupImpl implements CommonPopup
             lp.setMargins(0, 0, 0, 0);    //设置CheckBox边距
 
             checkBox.setText(data);
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+            {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked)
+                {
+                    if (isChecked)
+                    {
+                        listResult.add(data);
+                    }
+                    else
+                    {
+                        listResult.remove(data);
+                    }
+                }
+            });
+
+            linearLayout.addView(checkBox);
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onMultipleChoiceDialogOkButtonClick(listResult);
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onMultipleChoiceDialogCancelButtonClick();
+            }
+        });
+
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
+    }
+
+    /**
+     * 多选弹窗（带初始值）
+     * @param strTitle
+     * @param listData      所有数据
+     * @param listChoiced   已选择的数据
+     * @param listener
+     */
+    @Override
+    public void showMultipleChoiceDialog(String strTitle, List<String> listData, List<String> listChoiced, final OnMultipleChoiceDialogClickListener listener)
+    {
+        final List<String> listResult = new ArrayList<>();
+
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_multiple_choice_dialog, null);
+
+        TextView tvTitle = view.findViewById(R.id.tv_multiple_choice_dialog_title);
+        LinearLayout linearLayout = view.findViewById(R.id.ll_multiple_choice_dialog);
+        Button btnOk = view.findViewById(R.id.btn_multiple_choice_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_multiple_choice_dialog_cancel);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
+        }
+
+        for (int i = 0; i < listData.size(); i++)
+        {
+            final String data = listData.get(i);
+
+            boolean isChoiced = false;  //是否已经选择了
+            for (int j = 0; j < listChoiced.size(); j++)
+            {
+                if (data.equals(listChoiced.get(j)))
+                {
+                    listResult.add(data);
+                    isChoiced = true;
+                }
+            }
+
+            final CheckBox checkBox = new CheckBox(mContext);
+
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, 0, 0, 0);    //设置CheckBox边距
+
+            checkBox.setText(data);
+            checkBox.setChecked(isChoiced);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
             {
                 @Override

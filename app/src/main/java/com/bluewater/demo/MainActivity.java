@@ -154,7 +154,24 @@ public class MainActivity extends AppCompatActivity
         listData.add("条目4");
 
         final CommonPopup popup = new CommonPopupImpl(mContext, false);
-        popup.showSingleChoiceDialog("单选弹窗", listData, new CommonPopupImpl.OnSingleChoiceDialogClickListener()
+
+//        popup.showSingleChoiceDialog("单选弹窗", listData, new CommonPopupImpl.OnSingleChoiceDialogClickListener()
+//        {
+//            @Override
+//            public void onSingleChoiceDialogOkButtonClick(String value)
+//            {
+//                Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
+//                popup.dialogDismiss();      //弹窗消失
+//            }
+//
+//            @Override
+//            public void onSingleChoiceDialogCancelButtonClick()
+//            {
+//                popup.dialogDismiss();      //弹窗消失
+//            }
+//        });
+
+        popup.showSingleChoiceDialog("单选弹窗", listData, "条目2", new CommonPopupImpl.OnSingleChoiceDialogClickListener()
         {
             @Override
             public void onSingleChoiceDialogOkButtonClick(String value)
@@ -179,8 +196,38 @@ public class MainActivity extends AppCompatActivity
         listData.add("条目3");
         listData.add("条目4");
 
+
+
+        List<String> listChoicedData = new ArrayList<>();
+        listChoicedData.add("条目1");
+        listChoicedData.add("条目3");
+
+
         final CommonPopup popup = new CommonPopupImpl(mContext, false);
-        popup.showMultipleChoiceDialog("多选弹窗", listData, new CommonPopupImpl.OnMultipleChoiceDialogClickListener()
+
+//        popup.showMultipleChoiceDialog("多选弹窗", listData, new CommonPopupImpl.OnMultipleChoiceDialogClickListener()
+//        {
+//            @Override
+//            public void onMultipleChoiceDialogOkButtonClick(List<String> listResult)
+//            {
+//                String result = "";
+//                for (int i = 0; i < listResult.size(); i++)
+//                {
+//                    result = result + listResult.get(i);
+//                }
+//
+//                Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
+//                popup.dialogDismiss();      //弹窗消失
+//            }
+//
+//            @Override
+//            public void onMultipleChoiceDialogCancelButtonClick()
+//            {
+//                popup.dialogDismiss();      //弹窗消失
+//            }
+//        });
+
+        popup.showMultipleChoiceDialog("多选弹窗", listData, listChoicedData, new CommonPopupImpl.OnMultipleChoiceDialogClickListener()
         {
             @Override
             public void onMultipleChoiceDialogOkButtonClick(List<String> listResult)
