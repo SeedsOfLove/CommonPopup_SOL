@@ -196,8 +196,6 @@ public class MainActivity extends AppCompatActivity
         listData.add("条目3");
         listData.add("条目4");
 
-
-
         List<String> listChoicedData = new ArrayList<>();
         listChoicedData.add("条目1");
         listChoicedData.add("条目3");
