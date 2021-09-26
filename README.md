@@ -86,7 +86,7 @@ allprojects {
 ### Step 2. Add the dependency
 ```
 dependencies {
-        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.1.4'
+        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.1.5'
 	}
 ```
 ### Step 3. Using
