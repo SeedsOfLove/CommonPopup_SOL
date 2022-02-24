@@ -824,7 +824,8 @@ public class CommonPopupImpl implements CommonPopup
             final RadioButton radioButton = new RadioButton(mContext);
 
             RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(0, 0, 0, 10);    //设置RadioButton边距
+            lp.setMargins(0, 20, 5, 0);    //设置RadioButton边距
+            radioButton.setLayoutParams(lp);
 
             radioButton.setText(data);
             radioButton.setOnClickListener(new View.OnClickListener()
@@ -897,7 +898,8 @@ public class CommonPopupImpl implements CommonPopup
             final RadioButton radioButton = new RadioButton(mContext);
 
             RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(0, 0, 0, 10);    //设置RadioButton边距
+            lp.setMargins(0, 20, 5, 0);    //设置RadioButton边距
+            radioButton.setLayoutParams(lp);
 
             radioButton.setText(data);
             radioButton.setId(i);   //每个RadioButton设置一个id, 用于实现默认选中
@@ -939,7 +941,7 @@ public class CommonPopupImpl implements CommonPopup
         });
 
         dialogSet(view, R.style.DialogAnimStyle1,
-                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕寬度的四分之三
     }
 
     /*-----------------------------------单选弹窗END----------------------------------------*/
@@ -983,6 +985,7 @@ public class CommonPopupImpl implements CommonPopup
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.setMargins(0, 0, 0, 0);    //设置CheckBox边距
+            checkBox.setLayoutParams(lp);
 
             checkBox.setText(data);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()

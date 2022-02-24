@@ -24,6 +24,22 @@ public class Utils
     }
 
     /**
+     * 获得屏幕高度px(像素)
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenHeightPX(Context context)
+    {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+
+        int height = outMetrics.heightPixels;         // 屏幕高度（像素）
+        return height;
+    }
+
+    /**
      * sp转px
      * @param resources
      * @param sp
