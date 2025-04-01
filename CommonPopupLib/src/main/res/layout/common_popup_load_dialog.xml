@@ -9,7 +9,7 @@
     android:gravity="center"
     android:background="@drawable/round_corner_bg_white">
 
-    <com.wang.avi.AVLoadingIndicatorView
+    <com.bluewater.commonpopuplib.avi.AVLoadingIndicatorView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:indicatorColor="@color/cp_color_bg_gray"
