@@ -86,7 +86,7 @@ allprojects {
 ### Step 2. Add the dependency
 ```
 dependencies {
-        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.1.7'
+        implementation 'com.github.SeedsOfLove:CommonPopup_SOL:1.1.8'
 	}
 ```
 ### Step 3. Using
@@ -110,6 +110,8 @@ popup.showLineLoadDialogWithValue();	//带进度的线型加载弹窗
 popup.showDonutLoadDialogWithValue();	//带进度的圆圈加载弹窗
 
 popup.showEditDialog();					//输入弹窗
+
+popup.showPrivacyEditDialog();		    //私密输入弹窗
 
 popup.showSpinnerDialog();				//下拉弹窗
 
