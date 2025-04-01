@@ -29,7 +29,6 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textSize="15sp"
-        android:inputType="text"
         android:lines="1"
         android:background="@drawable/round_corner_bg_white_frame"/>
 

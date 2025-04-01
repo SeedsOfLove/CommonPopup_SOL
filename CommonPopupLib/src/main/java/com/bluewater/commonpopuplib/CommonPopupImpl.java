@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -687,6 +688,55 @@ public class CommonPopupImpl implements CommonPopup
         if (strContent != null)
         {
             editText.setText(strContent);
+        }
+
+        btnOk.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onEditDialogOkButtonClick(editText.getText().toString());
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                listener.onEditDialogCancelButtonClick();
+            }
+        });
+
+        dialogSet(view, R.style.DialogAnimStyle1,
+                Utils.getScreenWidthPX(mContext) / 4 * 3, LinearLayout.LayoutParams.WRAP_CONTENT); //设置弹出框宽度为屏幕高度的四分之三
+    }
+
+    /**
+     * 私密输入弹窗
+     * @param strTitle
+     * @param listener
+     */
+    @Override
+    public void showPrivacyEditDialog(String strTitle, final OnEditDialogClickListener listener)
+    {
+        // 加载布局文件
+        View view = View.inflate(mContext, R.layout.common_popup_edit_dialog, null);
+
+        TextView tvTitle = view.findViewById(R.id.tv_edit_dialog_title);
+        final EditText editText = view.findViewById(R.id.et_edit_dialog);
+        Button btnOk = view.findViewById(R.id.btn_edit_dialog_ok);
+        Button btnCancel = view.findViewById(R.id.btn_edit_dialog_cancel);
+
+           editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        if (strTitle == null)
+        {
+            tvTitle.setVisibility(View.GONE);
+        }
+        else
+        {
+            tvTitle.setText(strTitle);
         }
 
         btnOk.setOnClickListener(new View.OnClickListener()

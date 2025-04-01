@@ -525,4 +525,24 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
+    public void onClick19(View view)
+    {
+        final CommonPopup popup = new CommonPopupImpl(mContext, false);
+        popup.showPrivacyEditDialog("私密输入弹窗", new CommonPopupImpl.OnEditDialogClickListener()
+        {
+            @Override
+            public void onEditDialogOkButtonClick(String editBack)
+            {
+                Toast.makeText(mContext, editBack, Toast.LENGTH_SHORT).show();
+                popup.dialogDismiss();      //弹窗消失
+            }
+
+            @Override
+            public void onEditDialogCancelButtonClick()
+            {
+                popup.dialogDismiss();      //弹窗消失
+            }
+        });
+    }
 }
